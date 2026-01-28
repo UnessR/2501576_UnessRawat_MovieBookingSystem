@@ -1,0 +1,259 @@
+/* ---------- RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- BODY ---------- */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  background-color: #222;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  color: #fff;
+}
+
+/* ---------- SEARCH BAR ---------- */
+.search-box {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.search-box input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.search-box button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #222;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ---------- MOVIE GRID ---------- */
+.movie-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  justify-items: center; /* center cards */
+}
+
+
+/* ---------- MOVIE CARD ---------- */
+.movie-card {
+  width: 220px;              /* force poster size */
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+
+/* ---------- POSTER BOX ---------- */
+.poster-wrapper {
+  position: relative;
+  width: 100%;
+  height: 320px;             /* TALL poster */
+  overflow: hidden;
+  background-color: #eee;
+}
+
+
+/* ---------- POSTER IMAGE ---------- */
+.poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- DETAILS ---------- */
+.movie-details {
+  padding: 10px;
+}
+
+.movie-details h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.movie-details p {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+/* ---------- HOVER BOOK BUTTON ---------- */
+.poster-wrapper {
+  position: relative;
+}
+
+.hover-book-btn {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+}
+
+.poster-wrapper:hover .hover-book-btn {
+  opacity: 1;
+}
+
+/* ==============================
+   THEATRE SEAT BOOKING
+================================ */
+
+/* Theatre container */
+.theatre {
+  max-width: 1000px;
+  margin: 40px auto;
+  text-align: center;
+  color: #f8fafc;
+}
+
+/* Screen */
+.screen-label {
+  margin-bottom: 10px;
+  color: #94a3b8;
+  font-weight: bold;
+}
+
+.screen {
+  margin: 0 auto 40px;
+  width: 70%;
+  height: 25px;
+  background: linear-gradient(to right, #0ea5e9, #38bdf8);
+  border-radius: 0 0 100px 100px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+}
+
+/* Seat grid */
+.seats {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+/* Row label */
+.row-label {
+  grid-column: span 14;
+  text-align: left;
+  margin: 10px 0;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* Seat base */
+.seat {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #14b8a6; /* available */
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.seat:hover {
+  transform: scale(1.1);
+}
+
+/* Seat states */
+.seat.booked {
+  background-color: #ef4444;
+  cursor: not-allowed;
+}
+
+.seat.selected {
+  background-color: #facc15;
+}
+
+/* Hidden / empty seats (if needed later) */
+.seat.empty {
+  visibility: hidden;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.legend span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.legend .box {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+/* ==============================
+   HOVER BOOK BUTTON
+================================ */
+
+..poster-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.hover-book-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+
+    background-color: #0066cc;
+    color: white;
+    font-size: 14px;              /* ← was probably 15–16px before */
+    font-weight: 600;
+    padding: 8px 20px;            /* ← smaller than 10px 28px → much smaller box */
+    border-radius: 6px;           /* or 8px – smaller radius also helps slim look */
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    transition: all 0.25s ease;
+}
+
+.poster-wrapper:hover .hover-book-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.poster {
+    display: block;
+    transition: filter 0.4s ease;
+}
+
+.poster-wrapper:hover .poster {
+    filter: brightness(0.45) grayscale(0.3);
+}
