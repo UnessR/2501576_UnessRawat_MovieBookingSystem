@@ -1,4 +1,5 @@
 <?php
+require "../includes/header.php";
 require "../config/db.php";
 
 if (!isset($_GET['movie_id'])) {
@@ -23,6 +24,10 @@ $shows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <h2>Shows for: <?= htmlspecialchars($movie['title']) ?></h2>
+<a href="index.php" style="display:inline-block; margin-bottom:15px;">
+    ← Back to Movies
+</a>
+
 
 <?php if (empty($shows)): ?>
     <p>No shows available.</p>
@@ -44,7 +49,7 @@ $shows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <td>₹<?= $show['price'] ?></td>
         <td><?= $show['available_seats'] ?></td>
         <td>
-            <a href="seats.php?show_id=<?= $show['show_id'] ?>">
+            <a href="book.php?show_id=<?= $show['show_id'] ?>">
                 Select Seats
             </a>
         </td>

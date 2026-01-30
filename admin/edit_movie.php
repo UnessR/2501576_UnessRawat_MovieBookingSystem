@@ -2,19 +2,18 @@
 session_start();
 require "../config/db.php";
 
-/* Admin-only access */
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     die("Access denied");
 }
 
-/* Validate movie ID */
+
 if (!isset($_GET['id'])) {
     die("Movie ID missing");
 }
 
 $movie_id = $_GET['id'];
 
-/* Fetch existing movie */
+
 $stmt = $pdo->prepare("SELECT * FROM movies WHERE movie_id = ?");
 $stmt->execute([$movie_id]);
 $movie = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -23,7 +22,7 @@ if (!$movie) {
     die("Movie not found");
 }
 
-/* Handle form submission */
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $title       = $_POST['title'];
@@ -35,7 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     /* Keep old poster by default */
     $posterName = $movie['poster'];
 
-    /* If new image uploaded */
     if (!empty($_FILES['poster']['name'])) {
 
         $allowedTypes = ['image/jpeg', 'image/png'];

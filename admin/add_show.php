@@ -2,16 +2,13 @@
 session_start();
 require "../config/db.php";
 
-/* Admin only */
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     die("Access denied");
 }
 
-/* Fetch movies for dropdown */
 $stmt = $pdo->query("SELECT movie_id, title FROM movies");
 $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-/* Handle form submit */
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $movie_id = $_POST['movie_id'];

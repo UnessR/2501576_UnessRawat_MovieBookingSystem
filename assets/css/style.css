@@ -1,117 +1,138 @@
-/* ---------- RESET ---------- */
+/*Base*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ---------- BODY ---------- */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
+  background: #f5f7fa;
+  color: #1f2933;
 }
 
-/* ---------- HEADER ---------- */
-header {
-  background-color: #222;
-  padding: 20px;
+/* ==============================
+   HEADER & NAVIGATION
+================================ */
+.site-header {
+  background: #1f2933;
+  padding: 16px 20px;
   text-align: center;
 }
 
-header h1 {
-  color: #fff;
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 8px;
 }
 
-/* ---------- SEARCH BAR ---------- */
+.nav a {
+  color: #f9fafb;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.site-header h1 {
+  color: #ffffff;
+  font-size: 22px;
+  margin-top: 6px;
+}
+
+/* ==============================
+   SEARCH BAR
+================================ */
 .search-box {
   display: flex;
   justify-content: center;
   margin: 20px;
+  position: relative;
 }
 
 .search-box input {
   width: 300px;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #d1d5db;
+  border-radius: 4px 0 0 4px;
 }
 
 .search-box button {
-  padding: 10px 15px;
+  padding: 10px 16px;
+  background: #2563eb;
   border: none;
-  background-color: #222;
-  color: #fff;
+  color: white;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+}
+
+.search-box button:hover {
+  background: #1d4ed8;
+}
+
+/* AUTOCOMPLETE */
+.suggestions-box {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  width: 300px;
+  position: absolute;
+  top: 42px;
+  z-index: 100;
+}
+
+.suggestions-box div {
+  padding: 8px;
   cursor: pointer;
 }
 
-/* ---------- MOVIE GRID ---------- */
+.suggestions-box div:hover {
+  background: #e5e7eb;
+}
+
+/* ==============================
+   MOVIE LISTING
+================================ */
 .movie-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
+  gap: 24px;
   padding: 30px;
-  justify-items: center; /* center cards */
 }
 
-
-/* ---------- MOVIE CARD ---------- */
 .movie-card {
-  width: 220px;              /* force poster size */
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
-
-/* ---------- POSTER BOX ---------- */
+/* POSTER */
 .poster-wrapper {
   position: relative;
-  width: 100%;
-  height: 320px;             /* TALL poster */
-  overflow: hidden;
-  background-color: #eee;
+  height: 320px;
 }
 
-
-/* ---------- POSTER IMAGE ---------- */
 .poster {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
-/* ---------- DETAILS ---------- */
-.movie-details {
-  padding: 10px;
-}
-
-.movie-details h3 {
-  font-size: 16px;
-  margin-bottom: 5px;
-}
-
-.movie-details p {
-  font-size: 14px;
-  margin-bottom: 3px;
-}
-
-/* ---------- HOVER BOOK BUTTON ---------- */
-.poster-wrapper {
-  position: relative;
-}
-
+/* BOOK MOVIE BUTTON */
 .hover-book-btn {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  text-decoration: none;
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
   font-weight: bold;
-
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
-
   opacity: 0;
 }
 
@@ -119,35 +140,64 @@ header h1 {
   opacity: 1;
 }
 
-/* ==============================
-   THEATRE SEAT BOOKING
-================================ */
-
-/* Theatre container */
-.theatre {
-  max-width: 1000px;
-  margin: 40px auto;
-  text-align: center;
-  color: #f8fafc;
+/* MOVIE DETAILS */
+.movie-details {
+  padding: 12px;
 }
 
-/* Screen */
+.movie-details h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.movie-details p {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* ==============================
+   SHOW LISTING
+================================ */
+.show-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  padding: 14px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.show-card a {
+  color: #2563eb;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.show-card a:hover {
+  text-decoration: underline;
+}
+
+/* ==============================
+   SEAT BOOKING
+================================ */
+.theatre {
+  max-width: 900px;
+  margin: 40px auto;
+  text-align: center;
+}
+
 .screen-label {
-  margin-bottom: 10px;
-  color: #94a3b8;
+  color: #6b7280;
   font-weight: bold;
 }
 
 .screen {
-  margin: 0 auto 40px;
+  margin: 15px auto 30px;
   width: 70%;
-  height: 25px;
-  background: linear-gradient(to right, #0ea5e9, #38bdf8);
-  border-radius: 0 0 100px 100px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+  height: 18px;
+  background: #9ca3af;
+  border-radius: 0 0 60px 60px;
 }
 
-/* Seat grid */
 .seats {
   display: grid;
   grid-template-columns: repeat(14, 1fr);
@@ -155,105 +205,95 @@ header h1 {
   justify-items: center;
 }
 
-/* Row label */
 .row-label {
   grid-column: span 14;
   text-align: left;
-  margin: 10px 0;
-  color: #94a3b8;
   font-size: 14px;
+  color: #6b7280;
+  margin: 10px 0;
 }
 
-/* Seat base */
 .seat {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  background: #22c55e; /* available */
   cursor: pointer;
-  background-color: #14b8a6; /* available */
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.seat:hover {
-  transform: scale(1.1);
-}
-
-/* Seat states */
-.seat.booked {
-  background-color: #ef4444;
-  cursor: not-allowed;
 }
 
 .seat.selected {
-  background-color: #facc15;
+  background: #facc15;
 }
 
-/* Hidden / empty seats (if needed later) */
-.seat.empty {
-  visibility: hidden;
+.seat.booked {
+  background: #ef4444;
+  cursor: not-allowed;
 }
 
-/* Legend */
+/* LEGEND */
 .legend {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  margin-top: 30px;
+  gap: 20px;
+  margin-top: 25px;
 }
 
 .legend span {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-size: 14px;
 }
 
 .legend .box {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
 }
+
 /* ==============================
-   HOVER BOOK BUTTON
+   TABLES (BOOKING HISTORY / ADMIN)
 ================================ */
-
-..poster-wrapper {
-    position: relative;
-    display: inline-block;
+table {
+  width: 90%;
+  margin: 30px auto;
+  border-collapse: collapse;
+  background: white;
 }
 
-.hover-book-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    opacity: 0;
-    pointer-events: none;
-    z-index: 10;
-
-    background-color: #0066cc;
-    color: white;
-    font-size: 14px;              /* ← was probably 15–16px before */
-    font-weight: 600;
-    padding: 8px 20px;            /* ← smaller than 10px 28px → much smaller box */
-    border-radius: 6px;           /* or 8px – smaller radius also helps slim look */
-    text-decoration: none;
-    white-space: nowrap;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-    transition: all 0.25s ease;
+th, td {
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  text-align: center;
 }
 
-.poster-wrapper:hover .hover-book-btn {
-    opacity: 1;
-    pointer-events: auto;
+th {
+  background: #f1f5f9;
+  font-weight: bold;
 }
 
-.poster {
-    display: block;
-    transition: filter 0.4s ease;
+/* ==============================
+   BUTTONS
+================================ */
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.poster-wrapper:hover .poster {
-    filter: brightness(0.45) grayscale(0.3);
+button:hover {
+  background: #1d4ed8;
+}
+
+.btn-cancel,
+.delete-btn {
+  background: #ef4444;
+}
+
+.btn-cancel:hover,
+.delete-btn:hover {
+  background: #dc2626;
 }

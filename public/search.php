@@ -37,19 +37,22 @@ $movies = $stmt->fetchAll();
 <?php if ($movies): ?>
   <?php foreach ($movies as $movie): ?>
     <div class="movie-card">
+    <div class="poster-wrapper">
+        <img src="../assets/images/posters/<?= htmlspecialchars($movie['poster']) ?>"
+             class="poster">
 
-      <img 
-        src="../assets/images/posters/<?= htmlspecialchars($movie['poster']) ?>"
-        class="poster"
-      >
+        <a href="shows.php?movie_id=<?= $movie['movie_id'] ?>"
+           class="hover-book-btn">
+            Book Movie
+        </a>
+    </div>
 
-      <div class="movie-details">
+    <div class="movie-details">
         <h3><?= htmlspecialchars($movie['title']) ?></h3>
         <p>Genre: <?= htmlspecialchars($movie['genre']) ?></p>
         <p>Duration: <?= htmlspecialchars($movie['duration']) ?> mins</p>
-
-        <a href="#" class="btn">Book Now</a>
-      </div>
+    </div>
+</div>
 
     </div>
   <?php endforeach; ?>

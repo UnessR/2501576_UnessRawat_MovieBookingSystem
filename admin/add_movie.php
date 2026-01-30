@@ -6,15 +6,6 @@ if (empty($_SESSION['csrf_token'])) {
 
 require "../config/db.php";
 
-/*
- OPTIONAL (but recommended):
- Only admin can add movies
- Uncomment if you already have login & roles
-
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    die("Access denied");
-}
-*/
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
@@ -41,9 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Image size must be less than 2MB");
     }
 
-    // ----------------------------
-    // 3. Upload image
-    // ----------------------------
     $extension = pathinfo($_FILES['poster']['name'], PATHINFO_EXTENSION);
     $imageName = uniqid("poster_", true) . "." . $extension;
 

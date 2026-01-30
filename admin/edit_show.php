@@ -36,14 +36,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     );
     $stmt->execute([$date, $time, $price, $seats, $show_id]);
 
-    header("Location: shows_list.php");
+    header("Location: show_lists.php");
     exit;
 }
 ?>
 
 <h2>Edit Show</h2>
 
-<a href="shows_list.php">← Back</a>
+<a href="show_lists.php">← Back</a>
 <br><br>
 
 <form method="POST">
